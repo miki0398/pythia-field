@@ -1,0 +1,27 @@
+:root {
+  --forest-deep: #0A3D2A;
+  --forest-mid: #145C3F;
+  --forest-light: #1E7A54;
+  --gold-soft: #D4AF37;
+  --cream: #F5F0E6;
+  --text-light: #E8F5E9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--forest-deep);
+  color: var(--text-light);
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

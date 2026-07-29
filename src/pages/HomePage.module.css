@@ -1,0 +1,101 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(
+    165deg,
+    #061F16 0%,
+    #0A3D2A 40%,
+    #0D4A32 70%,
+    #145C3F 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(30, 122, 84, 0.25) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.content {
+  max-width: 560px;
+  text-align: center;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #D4AF37;
+  margin-bottom: 1.75rem;
+}
+
+.title {
+  font-size: 3.2rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  color: #F5F0E6;
+}
+
+.subtitle {
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: #A7D7B8;
+  margin-bottom: 1.75rem;
+  letter-spacing: 0.04em;
+}
+
+.description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(232, 245, 233, 0.78);
+  margin-bottom: 2.75rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.primaryButton {
+  background: transparent;
+  color: #F5F0E6;
+  border: 1px solid rgba(245, 240, 230, 0.35);
+  padding: 0.9rem 2.2rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.primaryButton:hover {
+  background: rgba(245, 240, 230, 0.08);
+  border-color: rgba(245, 240, 230, 0.6);
+}
+
+.footer {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 0.75rem;
+  color: rgba(232, 245, 233, 0.4);
+  letter-spacing: 0.08em;
+}
