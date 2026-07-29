@@ -1,119 +1,150 @@
 export default function HomePage() {
   return (
-   <div style={{
-  position: 'absolute',
-  inset: 0,
-  backgroundImage: 'url(/pythia-forest.jpg)',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center 30%',
-  zIndex: 0
-}} />
-  )
-      {/* FOREST BACKGROUND IMAGE */}
-      <img
-        src="/Pythia-forest.jpg"
-        alt="Pythia's Living Forest"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center 30%',
-          zIndex: 0
-        }}
-      />
+    <div style={{
+      minHeight: '100vh',
+      width: '100%',
+      position: 'relative',
+      overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontFamily: 'system-ui, sans-serif',
+      textAlign: 'center',
+    }}>
 
-      {/* DARK OVERLAY — makes text readable */}
+      {/* FOREST BACKGROUND */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.7) 100%)',
+        backgroundImage: 'url(/pythia-forest.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 30%',
+        zIndex: 0
+      }} />
+
+      {/* DARK OVERLAY */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.65) 100%)',
         zIndex: 1
       }} />
 
-      {/* CONTENT */}
+      {/* BOTTOM PANEL */}
       <div style={{
-        position: 'relative',
+        position: 'absolute',
+        bottom: '2.5rem',
+        left: '50%',
+        transform: 'translateX(-50%)',
         zIndex: 2,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: '2rem'
+        gap: '1rem',
+        width: '100%',
+        maxWidth: '420px',
+        padding: '0 1.5rem'
       }}>
 
+        {/* SPEECH BUBBLE */}
         <div style={{
-          border: '1px solid rgba(212,175,55,0.5)',
-          borderRadius: '999px',
-          padding: '0.35rem 1rem',
-          fontSize: '0.75rem',
-          letterSpacing: '0.15em',
-          textTransform: 'uppercase' as const,
-          color: '#D4AF37',
-          marginBottom: '1.75rem'
+          background: 'rgba(253,246,236,0.92)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(212,168,60,0.3)',
+          borderRadius: '20px',
+          padding: '14px 20px',
+          fontFamily: 'Georgia, serif',
+          fontSize: '15px',
+          fontStyle: 'italic',
+          lineHeight: 1.65,
+          color: '#1a1208',
+          textAlign: 'center',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.22)',
+          position: 'relative'
         }}>
-          Therapeia
+          Your forest is at peace this morning.
+          <div style={{
+            position: 'absolute',
+            bottom: '-11px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 0,
+            height: 0,
+            borderLeft: '10px solid transparent',
+            borderRight: '10px solid transparent',
+            borderTop: '11px solid rgba(253,246,236,0.92)'
+          }} />
         </div>
 
-        <h1 style={{
-          fontSize: '3.2rem',
-          fontWeight: 300,
-          marginBottom: '0.5rem',
-          letterSpacing: '-0.02em',
-          color: '#F5F0E6',
-          textShadow: '0 2px 20px rgba(0,0,0,0.4)'
+        {/* THREE PILLS */}
+        <div style={{
+          display: 'flex',
+          gap: '0.6rem',
+          width: '100%',
+          justifyContent: 'center'
         }}>
-          Pythia Field
-        </h1>
 
-        <p style={{
-          fontSize: '1.35rem',
-          color: '#A7D7B8',
-          marginBottom: '1.75rem',
-          letterSpacing: '0.04em',
-          textShadow: '0 1px 8px rgba(0,0,0,0.5)'
-        }}>
-          The Living Forest
-        </p>
+          <button style={{
+            flex: 1.4,
+            background: 'rgba(212,168,60,0.25)',
+            border: '1px solid rgba(212,168,60,0.45)',
+            borderRadius: '60px',
+            padding: '12px 16px',
+            color: '#f0d080',
+            fontSize: '13px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            backdropFilter: 'blur(16px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
+          }}>
+            🌿 Talk to Pythia
+          </button>
 
-        <p style={{
-          fontSize: '1.05rem',
-          lineHeight: 1.8,
-          color: 'rgba(255,255,255,0.82)',
-          maxWidth: '480px',
-          marginBottom: '2.75rem',
-          textShadow: '0 1px 6px rgba(0,0,0,0.5)'
-        }}>
-          A calm space for monitoring, understanding,
-          and gently guiding the mind and brain toward clarity.
-        </p>
+          <button style={{
+            flex: 1,
+            background: 'rgba(20,40,12,0.55)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            borderRadius: '60px',
+            padding: '12px 16px',
+            color: 'rgba(255,255,255,0.9)',
+            fontSize: '13px',
+            fontWeight: 500,
+            cursor: 'pointer',
+            backdropFilter: 'blur(16px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
+          }}>
+            🪨 The Cave
+          </button>
 
-        <button style={{
-          background: 'rgba(255,255,255,0.08)',
-          color: '#F5F0E6',
-          border: '1px solid rgba(245,240,230,0.4)',
-          padding: '0.9rem 2.2rem',
-          fontSize: '0.95rem',
-          letterSpacing: '0.06em',
-          borderRadius: '999px',
-          cursor: 'pointer',
-          backdropFilter: 'blur(8px)',
-          transition: 'all 0.25s ease'
-        }}>
-          Enter the Forest
-        </button>
+          <button style={{
+            flex: 1,
+            background: 'rgba(20,40,12,0.55)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            borderRadius: '60px',
+            padding: '12px 16px',
+            color: 'rgba(255,255,255,0.9)',
+            fontSize: '13px',
+            fontWeight: 500,
+            cursor: 'pointer',
+            backdropFilter: 'blur(16px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
+          }}>
+            🏥 Care Team
+          </button>
 
+        </div>
       </div>
 
-      {/* BOTTOM LABEL */}
-      <div style={{
-        position: 'absolute',
-        bottom: '2rem',
-        zIndex: 2,
-        fontSize: '0.75rem',
-        color: 'rgba(255,255,255,0.4)',
-        letterSpacing: '0.08em'
-      }}>
-        Patient Zero · Foundation
-      </div>
+    </div>
+  )
 }
