@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import CavePage from './CavePage'
+import CareTeamPage from './CareTeamPage'
 
 export default function HomePage() {
   const glowRef = useRef<HTMLDivElement>(null)
+
   const messages = [
     "Your forest is at peace this morning.",
     "The cedar slept well last night. Can you feel how still everything is?",
@@ -12,8 +14,10 @@ export default function HomePage() {
     "Stay with the forest for a moment. Just breathe with me.",
     "Everything that matters is still here. The forest holds it all safely."
   ]
+
   const [msgIndex, setMsgIndex] = useState(0)
   const [showCave, setShowCave] = useState(false)
+  const [showCareTeam, setShowCareTeam] = useState(false)
 
   useEffect(() => {
     const el = glowRef.current
@@ -57,7 +61,7 @@ export default function HomePage() {
         zIndex: 1
       }} />
 
-      {/* PYTHIA GLOW — floats up and down */}
+      {/* PYTHIA GLOW */}
       <div
         ref={glowRef}
         style={{
@@ -116,7 +120,7 @@ export default function HomePage() {
           50%       { opacity: 1;   transform: scale(1.2); }
         }
       `}</style>
-      
+
       {/* BOTTOM PANEL */}
       <div style={{
         position: 'absolute',
@@ -133,7 +137,6 @@ export default function HomePage() {
         padding: '0 1.5rem'
       }}>
 
-        {/* SPEECH BUBBLE */}
         {/* LISTENING DOTS */}
         <div style={{
           display: 'flex',
@@ -148,30 +151,32 @@ export default function HomePage() {
               height: '6px',
               borderRadius: '50%',
               background: 'rgba(212,168,60,0.8)',
-              animation: `pulse 2s ease-in-out infinite`,
+              animation: 'pulse 2s ease-in-out infinite',
               animationDelay: `${i * 0.3}s`
             }} />
           ))}
         </div>
-<div
+
+        {/* SPEECH BUBBLE */}
+        <div
           onClick={() => setMsgIndex(i => (i + 1) % messages.length)}
           style={{
-          cursor: 'pointer',
-          background: 'rgba(253,246,236,0.92)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(212,168,60,0.3)',
-          borderRadius: '20px',
-          padding: '14px 20px',
-          fontFamily: 'Georgia, serif',
-          fontSize: '15px',
-          fontStyle: 'italic',
-          lineHeight: 1.65,
-          color: '#1a1208',
-          textAlign: 'center',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.22)',
-          position: 'relative',
-          width: '100%'
-        }}>
+            cursor: 'pointer',
+            background: 'rgba(253,246,236,0.92)',
+            backdropFilter: 'blur(16px)',
+            border: '1px solid rgba(212,168,60,0.3)',
+            borderRadius: '20px',
+            padding: '14px 20px',
+            fontFamily: 'Georgia, serif',
+            fontSize: '15px',
+            fontStyle: 'italic',
+            lineHeight: 1.65,
+            color: '#1a1208',
+            textAlign: 'center',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.22)',
+            position: 'relative',
+            width: '100%'
+          }}>
           {messages[msgIndex]}
           <div style={{
             position: 'absolute',
@@ -238,6 +243,7 @@ export default function HomePage() {
           </button>
 
           <button
+            onClick={() => setShowCareTeam(true)}
             style={{
               flex: 1,
               background: 'rgba(20,40,12,0.55)',
@@ -260,7 +266,10 @@ export default function HomePage() {
 
         </div>
       </div>
-{showCave && <CavePage onClose={() => setShowCave(false)} />}
+
+      {showCave && <CavePage onClose={() => setShowCave(false)} />}
+      {showCareTeam && <CareTeamPage onClose={() => setShowCareTeam(false)} />}
+
     </div>
   )
 }
