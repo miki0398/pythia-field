@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import CavePage from './CavePage'
 
 export default function HomePage() {
   const glowRef = useRef<HTMLDivElement>(null)
@@ -12,6 +13,7 @@ export default function HomePage() {
     "Everything that matters is still here. The forest holds it all safely."
   ]
   const [msgIndex, setMsgIndex] = useState(0)
+  const [showCave, setShowCave] = useState(false)
 
   useEffect(() => {
     const el = glowRef.current
@@ -191,66 +193,74 @@ export default function HomePage() {
           width: '100%'
         }}>
 
-          <button style={{
-            flex: 1.4,
-            background: 'rgba(212,168,60,0.25)',
-            border: '1px solid rgba(212,168,60,0.45)',
-            borderRadius: '60px',
-            padding: '12px 16px',
-            color: '#f0d080',
-            fontSize: '13px',
-            fontWeight: 600,
-            cursor: 'pointer',
-            backdropFilter: 'blur(16px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px'
-          }}>
+          <button
+            onClick={() => setMsgIndex(i => (i + 1) % messages.length)}
+            style={{
+              flex: 1,
+              background: 'rgba(212,168,60,0.25)',
+              border: '1px solid rgba(212,168,60,0.45)',
+              borderRadius: '60px',
+              padding: '14px 8px',
+              color: '#f0d080',
+              fontSize: '13px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              backdropFilter: 'blur(16px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              minHeight: '52px'
+            }}>
             🌿 Talk to Pythia
           </button>
 
-          <button style={{
-            flex: 1,
-            background: 'rgba(20,40,12,0.55)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            borderRadius: '60px',
-            padding: '12px 16px',
-            color: 'rgba(255,255,255,0.9)',
-            fontSize: '13px',
-            fontWeight: 500,
-            cursor: 'pointer',
-            backdropFilter: 'blur(16px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px'
-          }}>
+          <button
+            onClick={() => setShowCave(true)}
+            style={{
+              flex: 1,
+              background: 'rgba(20,40,12,0.55)',
+              border: '1px solid rgba(255,255,255,0.18)',
+              borderRadius: '60px',
+              padding: '14px 8px',
+              color: 'rgba(255,255,255,0.9)',
+              fontSize: '13px',
+              fontWeight: 500,
+              cursor: 'pointer',
+              backdropFilter: 'blur(16px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              minHeight: '52px'
+            }}>
             🪨 The Cave
           </button>
 
-          <button style={{
-            flex: 1,
-            background: 'rgba(20,40,12,0.55)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            borderRadius: '60px',
-            padding: '12px 16px',
-            color: 'rgba(255,255,255,0.9)',
-            fontSize: '13px',
-            fontWeight: 500,
-            cursor: 'pointer',
-            backdropFilter: 'blur(16px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px'
-          }}>
+          <button
+            style={{
+              flex: 1,
+              background: 'rgba(20,40,12,0.55)',
+              border: '1px solid rgba(255,255,255,0.18)',
+              borderRadius: '60px',
+              padding: '14px 8px',
+              color: 'rgba(255,255,255,0.9)',
+              fontSize: '13px',
+              fontWeight: 500,
+              cursor: 'pointer',
+              backdropFilter: 'blur(16px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              minHeight: '52px'
+            }}>
             🏥 Care Team
           </button>
 
         </div>
       </div>
-
+{showCave && <CavePage onClose={() => setShowCave(false)} />}
     </div>
   )
 }
