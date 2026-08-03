@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import CavePage from './CavePage'
 import CareTeamPage from './CareTeamPage'
+import { TalkToPythia } from '../components/TalkToPythia'
 
 export default function HomePage() {
   const glowRef = useRef<HTMLDivElement>(null)
@@ -18,6 +19,7 @@ export default function HomePage() {
   const [msgIndex, setMsgIndex] = useState(0)
   const [showCave, setShowCave] = useState(false)
   const [showCareTeam, setShowCareTeam] = useState(false)
+  const [showTalkModal, setShowTalkModal] = useState(false)
 
   useEffect(() => {
     const el = glowRef.current
@@ -269,6 +271,23 @@ export default function HomePage() {
 
       {showCave && <CavePage onClose={() => setShowCave(false)} />}
       {showCareTeam && <CareTeamPage onClose={() => setShowCareTeam(false)} />}
+
+      {showTalkModal && (
+  <div style={{
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'rgba(0,0,0,0.7)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1000
+  }}>
+    <TalkToPythia onClose={() => setShowTalkModal(false)} />
+  </div>
+)}
 
     </div>
   )
