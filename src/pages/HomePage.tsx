@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import CavePage from './CavePage'
 import CareTeamPage from './CareTeamPage'
-import { TalkToPythia } from '../components/TalkToPythia'
+import { TalkToPythia } from '../components/TalkToPythia.tsx'
 
 export default function HomePage() {
   const glowRef = useRef<HTMLDivElement>(null)
@@ -161,7 +161,7 @@ export default function HomePage() {
 
         {/* SPEECH BUBBLE */}
         <div
-          onClick={() => setMsgIndex(i => (i + 1) % messages.length)}
+          onClick={() => setShowTalkModal(true)}
           style={{
             cursor: 'pointer',
             background: 'rgba(253,246,236,0.92)',
@@ -201,7 +201,7 @@ export default function HomePage() {
         }}>
 
           <button
-            onClick={() => setMsgIndex(i => (i + 1) % messages.length)}
+            onClick={() => setShowTalkModal(true)}
             style={{
               flex: 1,
               background: 'rgba(212,168,60,0.25)',

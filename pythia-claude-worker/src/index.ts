@@ -1,7 +1,4 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { classifyALCSIntent, type ALCSIntent } from "./alcs-intent-classifier.ts";
-import { handleHealthcareCoordination } from "./healthcare-coordinator.ts";
-import type { ExportedHandler } from "cloudflare:workers";
 
 interface Env {
   ANTHROPIC_API_KEY: string;
@@ -31,21 +28,6 @@ async function synthesizeVoice(
   return await response.arrayBuffer();
 }
 
-async function executeALCSTool(
-  intent: ALCSIntent,
-  apiKey: string
-): Promise<any> {
-  switch (intent.toolType) {
-    case "healthcare_coordinator":
-      return await handleHealthcareCoordination(
-        { action: intent.action as any, details: intent.details },
-        { lat: 0, lng: 0 }
-      );
-    default:
-      return { status: "pending", message: "Tool not yet implemented" };
-  }
-}
-
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (request.method === "OPTIONS") {
@@ -69,7 +51,6 @@ export default {
 
     try {
       const body = await request.json() as any;
-
       const client = new Anthropic({ apiKey });
 
       const response = await client.messages.create({
@@ -79,34 +60,14 @@ export default {
         messages: body.messages,
       });
 
-      // Classify intent from user message
-      const intent = await classifyALCSIntent(
-        body.messages[body.messages.length - 1].content,
-        apiKey
-      );
-
-      // If ALCS action needed, execute it
-      let alcsResult = null;
-      if (intent.toolType !== "none") {
-        alcsResult = await executeALCSTool(intent, apiKey);
-      }
-
-      // Return both Claude response AND ALCS result
-      return new Response(
-        JSON.stringify({
-          claudeResponse: response,
-          alcsAction: alcsResult,
-          intent: intent,
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type",
-          },
-        }
-      );
+      return new Response(JSON.stringify(response), {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type",
+        },
+      });
     } catch (error) {
       return new Response(JSON.stringify({ error: String(error) }), {
         status: 500,
@@ -119,4 +80,4 @@ export default {
       });
     }
   },
-} satisfies ExportedHandler<Env>;
+};

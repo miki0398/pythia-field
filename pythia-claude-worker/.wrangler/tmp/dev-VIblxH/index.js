@@ -41,7 +41,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// .wrangler/tmp/bundle-3fnFUr/checked-fetch.js
+// .wrangler/tmp/bundle-lKR4ja/checked-fetch.js
 function checkURL(request, init) {
   const url = request instanceof URL ? request : new URL(
     (typeof request === "string" ? new Request(request, init) : request).url
@@ -59,7 +59,7 @@ function checkURL(request, init) {
 }
 var urls;
 var init_checked_fetch = __esm({
-  ".wrangler/tmp/bundle-3fnFUr/checked-fetch.js"() {
+  ".wrangler/tmp/bundle-lKR4ja/checked-fetch.js"() {
     urls = /* @__PURE__ */ new Set();
     __name(checkURL, "checkURL");
     globalThis.fetch = new Proxy(globalThis.fetch, {
@@ -87,7 +87,7 @@ var init_modules_watch_stub = __esm({
   }
 });
 
-// ../node_modules/@anthropic-ai/sdk/internal/errors.mjs
+// node_modules/@anthropic-ai/sdk/internal/errors.mjs
 function isAbortError(err) {
   return typeof err === "object" && err !== null && // Spec-compliant fetch implementations
   ("name" in err && err.name === "AbortError" || // Expo fetch
@@ -95,7 +95,7 @@ function isAbortError(err) {
 }
 var castToError;
 var init_errors = __esm({
-  "../node_modules/@anthropic-ai/sdk/internal/errors.mjs"() {
+  "node_modules/@anthropic-ai/sdk/internal/errors.mjs"() {
     init_checked_fetch();
     init_modules_watch_stub();
     __name(isAbortError, "isAbortError");
@@ -126,10 +126,10 @@ var init_errors = __esm({
   }
 });
 
-// ../node_modules/@anthropic-ai/sdk/core/error.mjs
+// node_modules/@anthropic-ai/sdk/core/error.mjs
 var AnthropicError, APIError, APIUserAbortError, APIConnectionError, APIConnectionTimeoutError, RetryableError, BadRequestError, AuthenticationError, PermissionDeniedError, NotFoundError, ConflictError, UnprocessableEntityError, RateLimitError, InternalServerError;
 var init_error = __esm({
-  "../node_modules/@anthropic-ai/sdk/core/error.mjs"() {
+  "node_modules/@anthropic-ai/sdk/core/error.mjs"() {
     init_checked_fetch();
     init_modules_watch_stub();
     init_errors();
@@ -275,9 +275,9 @@ var init_error = __esm({
   }
 });
 
-// ../node_modules/standardwebhooks/dist/timing_safe_equal.js
+// node_modules/standardwebhooks/dist/timing_safe_equal.js
 var require_timing_safe_equal = __commonJS({
-  "../node_modules/standardwebhooks/dist/timing_safe_equal.js"(exports) {
+  "node_modules/standardwebhooks/dist/timing_safe_equal.js"(exports) {
     "use strict";
     init_checked_fetch();
     init_modules_watch_stub();
@@ -314,9 +314,9 @@ var require_timing_safe_equal = __commonJS({
   }
 });
 
-// ../node_modules/@stablelib/base64/lib/base64.js
+// node_modules/@stablelib/base64/lib/base64.js
 var require_base64 = __commonJS({
-  "../node_modules/@stablelib/base64/lib/base64.js"(exports) {
+  "node_modules/@stablelib/base64/lib/base64.js"(exports) {
     "use strict";
     init_checked_fetch();
     init_modules_watch_stub();
@@ -536,9 +536,9 @@ var require_base64 = __commonJS({
   }
 });
 
-// ../node_modules/fast-sha256/sha256.js
+// node_modules/fast-sha256/sha256.js
 var require_sha256 = __commonJS({
-  "../node_modules/fast-sha256/sha256.js"(exports, module) {
+  "node_modules/fast-sha256/sha256.js"(exports, module) {
     init_checked_fetch();
     init_modules_watch_stub();
     (function(root, factory) {
@@ -970,9 +970,9 @@ var require_sha256 = __commonJS({
   }
 });
 
-// ../node_modules/standardwebhooks/dist/index.js
+// node_modules/standardwebhooks/dist/index.js
 var require_dist = __commonJS({
-  "../node_modules/standardwebhooks/dist/index.js"(exports) {
+  "node_modules/standardwebhooks/dist/index.js"(exports) {
     "use strict";
     init_checked_fetch();
     init_modules_watch_stub();
@@ -1088,7 +1088,7 @@ var require_dist = __commonJS({
   }
 });
 
-// ../node_modules/@anthropic-ai/sdk/tools/agent-toolset/node.browser.mjs
+// node_modules/@anthropic-ai/sdk/tools/agent-toolset/node.browser.mjs
 var node_browser_exports = {};
 __export(node_browser_exports, {
   BashSession: () => BashSession,
@@ -1142,7 +1142,7 @@ function betaGrepTool(_ctx) {
 }
 var BashSession;
 var init_node_browser = __esm({
-  "../node_modules/@anthropic-ai/sdk/tools/agent-toolset/node.browser.mjs"() {
+  "node_modules/@anthropic-ai/sdk/tools/agent-toolset/node.browser.mjs"() {
     init_checked_fetch();
     init_modules_watch_stub();
     init_error();
@@ -1178,11 +1178,11 @@ var init_node_browser = __esm({
   }
 });
 
-// .wrangler/tmp/bundle-3fnFUr/middleware-loader.entry.ts
+// .wrangler/tmp/bundle-lKR4ja/middleware-loader.entry.ts
 init_checked_fetch();
 init_modules_watch_stub();
 
-// .wrangler/tmp/bundle-3fnFUr/middleware-insertion-facade.js
+// .wrangler/tmp/bundle-lKR4ja/middleware-insertion-facade.js
 init_checked_fetch();
 init_modules_watch_stub();
 
@@ -1190,15 +1190,15 @@ init_modules_watch_stub();
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/index.mjs
+// node_modules/@anthropic-ai/sdk/index.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/client.mjs
+// node_modules/@anthropic-ai/sdk/client.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/tslib.mjs
+// node_modules/@anthropic-ai/sdk/internal/tslib.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 function __classPrivateFieldSet(receiver, state, value, kind, f) {
@@ -1220,7 +1220,7 @@ function __classPrivateFieldGet(receiver, state, kind, f) {
 }
 __name(__classPrivateFieldGet, "__classPrivateFieldGet");
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/uuid.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/uuid.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var uuid4 = /* @__PURE__ */ __name(function() {
@@ -1234,7 +1234,7 @@ var uuid4 = /* @__PURE__ */ __name(function() {
   return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, (c) => (+c ^ randomByte() & 15 >> +c / 4).toString(16));
 }, "uuid4");
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/values.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/values.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
@@ -1280,7 +1280,7 @@ var safeJSON = /* @__PURE__ */ __name((text) => {
   }
 }, "safeJSON");
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/sleep.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/sleep.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var sleep = /* @__PURE__ */ __name((ms, signal) => new Promise((resolve) => {
@@ -1297,19 +1297,19 @@ var sleep = /* @__PURE__ */ __name((ms, signal) => new Promise((resolve) => {
   signal?.addEventListener("abort", onAbort, { once: true });
 }), "sleep");
 
-// ../node_modules/@anthropic-ai/sdk/client.mjs
+// node_modules/@anthropic-ai/sdk/client.mjs
 init_errors();
 
-// ../node_modules/@anthropic-ai/sdk/internal/detect-platform.mjs
+// node_modules/@anthropic-ai/sdk/internal/detect-platform.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/version.mjs
+// node_modules/@anthropic-ai/sdk/version.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var VERSION = "0.115.0";
 
-// ../node_modules/@anthropic-ai/sdk/internal/detect-platform.mjs
+// node_modules/@anthropic-ai/sdk/internal/detect-platform.mjs
 var isRunningInBrowser = /* @__PURE__ */ __name(() => {
   return (
     // @ts-ignore
@@ -1445,7 +1445,7 @@ var getPlatformHeaders = /* @__PURE__ */ __name(() => {
   return _platformHeaders ?? (_platformHeaders = getPlatformProperties());
 }, "getPlatformHeaders");
 
-// ../node_modules/@anthropic-ai/sdk/internal/request-signal.mjs
+// node_modules/@anthropic-ai/sdk/internal/request-signal.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var cleanups = /* @__PURE__ */ new WeakMap();
@@ -1473,7 +1473,7 @@ function releaseRequestSignal(controller) {
 }
 __name(releaseRequestSignal, "releaseRequestSignal");
 
-// ../node_modules/@anthropic-ai/sdk/internal/shims.mjs
+// node_modules/@anthropic-ai/sdk/internal/shims.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 function getDefaultFetch() {
@@ -1552,7 +1552,7 @@ async function CancelReadableStream(stream) {
 }
 __name(CancelReadableStream, "CancelReadableStream");
 
-// ../node_modules/@anthropic-ai/sdk/internal/request-options.mjs
+// node_modules/@anthropic-ai/sdk/internal/request-options.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var FallbackEncoder = /* @__PURE__ */ __name(({ headers, body }) => {
@@ -1564,19 +1564,19 @@ var FallbackEncoder = /* @__PURE__ */ __name(({ headers, body }) => {
   };
 }, "FallbackEncoder");
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/query.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/query.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/qs/stringify.mjs
+// node_modules/@anthropic-ai/sdk/internal/qs/stringify.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/qs/utils.mjs
+// node_modules/@anthropic-ai/sdk/internal/qs/utils.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/qs/formats.mjs
+// node_modules/@anthropic-ai/sdk/internal/qs/formats.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var default_format = "RFC3986";
@@ -1587,7 +1587,7 @@ var formatters = {
 };
 var RFC1738 = "RFC1738";
 
-// ../node_modules/@anthropic-ai/sdk/internal/qs/utils.mjs
+// node_modules/@anthropic-ai/sdk/internal/qs/utils.mjs
 var has = /* @__PURE__ */ __name((obj, key) => (has = Object.hasOwn ?? Function.prototype.call.bind(Object.prototype.hasOwnProperty), has(obj, key)), "has");
 var hex_table = /* @__PURE__ */ (() => {
   const array = [];
@@ -1668,7 +1668,7 @@ function maybe_map(val, fn) {
 }
 __name(maybe_map, "maybe_map");
 
-// ../node_modules/@anthropic-ai/sdk/internal/qs/stringify.mjs
+// node_modules/@anthropic-ai/sdk/internal/qs/stringify.mjs
 var array_prefix_generators = {
   brackets(prefix) {
     return String(prefix) + "[]";
@@ -1950,16 +1950,16 @@ function stringify(object, opts = {}) {
 }
 __name(stringify, "stringify");
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/query.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/query.mjs
 function stringifyQuery(query) {
   return stringify(query, { arrayFormat: "brackets" });
 }
 __name(stringifyQuery, "stringifyQuery");
 
-// ../node_modules/@anthropic-ai/sdk/client.mjs
+// node_modules/@anthropic-ai/sdk/client.mjs
 init_error();
 
-// ../node_modules/@anthropic-ai/sdk/lib/credentials/types.mjs
+// node_modules/@anthropic-ai/sdk/lib/credentials/types.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
@@ -2136,11 +2136,11 @@ var WorkloadIdentityError = class extends AnthropicError {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/lib/credentials/token-cache.mjs
+// node_modules/@anthropic-ai/sdk/lib/credentials/token-cache.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/time.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/time.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 function nowAsSeconds() {
@@ -2148,7 +2148,7 @@ function nowAsSeconds() {
 }
 __name(nowAsSeconds, "nowAsSeconds");
 
-// ../node_modules/@anthropic-ai/sdk/lib/credentials/token-cache.mjs
+// node_modules/@anthropic-ai/sdk/lib/credentials/token-cache.mjs
 var TokenCache = class {
   static {
     __name(this, "TokenCache");
@@ -2240,11 +2240,11 @@ var TokenCache = class {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/lib/credentials/credential-chain.mjs
+// node_modules/@anthropic-ai/sdk/lib/credentials/credential-chain.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/env.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/env.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var readEnv = /* @__PURE__ */ __name((env) => {
@@ -2257,20 +2257,20 @@ var readEnv = /* @__PURE__ */ __name((env) => {
   return void 0;
 }, "readEnv");
 
-// ../node_modules/@anthropic-ai/sdk/core/credentials.mjs
+// node_modules/@anthropic-ai/sdk/core/credentials.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/base64.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/base64.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/bytes.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/bytes.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 function concatBytes(buffers) {
@@ -2300,7 +2300,7 @@ function decodeUTF8(bytes) {
 }
 __name(decodeUTF8, "decodeUTF8");
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/log.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/log.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var defaultLogLevel = "warn";
@@ -2394,7 +2394,7 @@ var formatRequestDetails = /* @__PURE__ */ __name((details) => {
   return details;
 }, "formatRequestDetails");
 
-// ../node_modules/@anthropic-ai/sdk/core/credentials.mjs
+// node_modules/@anthropic-ai/sdk/core/credentials.mjs
 var CREDENTIALS_FILE_VERSION = "1.0";
 var PROFILE_NAME_PATTERN = /^[A-Za-z0-9_.-]+$/;
 function validateProfileName(name) {
@@ -2569,7 +2569,7 @@ var getActiveProfileName = /* @__PURE__ */ __name(async () => {
   }
 }, "getActiveProfileName");
 
-// ../node_modules/@anthropic-ai/sdk/lib/credentials/identity-token.mjs
+// node_modules/@anthropic-ai/sdk/lib/credentials/identity-token.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
@@ -2601,7 +2601,7 @@ function identityTokenFromValue(token) {
 }
 __name(identityTokenFromValue, "identityTokenFromValue");
 
-// ../node_modules/@anthropic-ai/sdk/lib/credentials/oidc-federation.mjs
+// node_modules/@anthropic-ai/sdk/lib/credentials/oidc-federation.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 function oidcFederationProvider(config) {
@@ -2662,7 +2662,7 @@ function oidcFederationProvider(config) {
 }
 __name(oidcFederationProvider, "oidcFederationProvider");
 
-// ../node_modules/@anthropic-ai/sdk/lib/credentials/user-oauth.mjs
+// node_modules/@anthropic-ai/sdk/lib/credentials/user-oauth.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 function userOAuthProvider(config) {
@@ -2739,7 +2739,7 @@ function userOAuthProvider(config) {
 }
 __name(userOAuthProvider, "userOAuthProvider");
 
-// ../node_modules/@anthropic-ai/sdk/lib/credentials/credential-chain.mjs
+// node_modules/@anthropic-ai/sdk/lib/credentials/credential-chain.mjs
 function resolveCredentialsFromConfig(config, options) {
   const credentialsPath = config.authentication.credentials_path ?? null;
   const effectiveBaseURL = (config.base_url || options.baseURL).replace(/\/+$/, "");
@@ -2876,21 +2876,21 @@ function cachedExchangeProvider(exchange, credentialsPath, onCacheWriteError, on
 }
 __name(cachedExchangeProvider, "cachedExchangeProvider");
 
-// ../node_modules/@anthropic-ai/sdk/core/middleware.mjs
+// node_modules/@anthropic-ai/sdk/core/middleware.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_errors();
 
-// ../node_modules/@anthropic-ai/sdk/internal/parse.mjs
+// node_modules/@anthropic-ai/sdk/internal/parse.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/core/streaming.mjs
+// node_modules/@anthropic-ai/sdk/core/streaming.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
 
-// ../node_modules/@anthropic-ai/sdk/internal/decoders/line.mjs
+// node_modules/@anthropic-ai/sdk/internal/decoders/line.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var _LineDecoder_buffer;
@@ -2974,7 +2974,7 @@ function findDoubleNewlineIndex(buffer) {
 }
 __name(findDoubleNewlineIndex, "findDoubleNewlineIndex");
 
-// ../node_modules/@anthropic-ai/sdk/core/streaming.mjs
+// node_modules/@anthropic-ai/sdk/core/streaming.mjs
 init_errors();
 init_error();
 var _Stream_client;
@@ -3252,7 +3252,7 @@ function partition(str, delimiter) {
 }
 __name(partition, "partition");
 
-// ../node_modules/@anthropic-ai/sdk/internal/parse.mjs
+// node_modules/@anthropic-ai/sdk/internal/parse.mjs
 async function defaultParseResponse(client, props) {
   const { response, requestLogID, retryOfRequestLogID, startTime } = props;
   const body = await (async () => {
@@ -3305,7 +3305,7 @@ function addRequestID(value, response) {
 }
 __name(addRequestID, "addRequestID");
 
-// ../node_modules/@anthropic-ai/sdk/core/middleware.mjs
+// node_modules/@anthropic-ai/sdk/core/middleware.mjs
 init_error();
 var fetchOriginErrors = /* @__PURE__ */ new WeakSet();
 function isFetchOriginError(err) {
@@ -3408,12 +3408,12 @@ function applyMiddleware(fetchFn, middleware, options, client) {
 }
 __name(applyMiddleware, "applyMiddleware");
 
-// ../node_modules/@anthropic-ai/sdk/core/pagination.mjs
+// node_modules/@anthropic-ai/sdk/core/pagination.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
 
-// ../node_modules/@anthropic-ai/sdk/core/api-promise.mjs
+// node_modules/@anthropic-ai/sdk/core/api-promise.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var _APIPromise_client;
@@ -3481,7 +3481,7 @@ var APIPromise = class _APIPromise extends Promise {
 };
 _APIPromise_client = /* @__PURE__ */ new WeakMap();
 
-// ../node_modules/@anthropic-ai/sdk/core/pagination.mjs
+// node_modules/@anthropic-ai/sdk/core/pagination.mjs
 var _AbstractPage_client;
 var AbstractPage = class {
   static {
@@ -3645,15 +3645,15 @@ var BidirectionalPageCursor = class extends AbstractPage {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/core/uploads.mjs
+// node_modules/@anthropic-ai/sdk/core/uploads.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/to-file.mjs
+// node_modules/@anthropic-ai/sdk/internal/to-file.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/uploads.mjs
+// node_modules/@anthropic-ai/sdk/internal/uploads.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var checkFileSupport = /* @__PURE__ */ __name(() => {
@@ -3736,7 +3736,7 @@ var addFormValue = /* @__PURE__ */ __name(async (form, key, value, stripFilename
   }
 }, "addFormValue");
 
-// ../node_modules/@anthropic-ai/sdk/internal/to-file.mjs
+// node_modules/@anthropic-ai/sdk/internal/to-file.mjs
 var isBlobLike = /* @__PURE__ */ __name((value) => value != null && typeof value === "object" && typeof value.size === "number" && typeof value.type === "string" && typeof value.text === "function" && typeof value.slice === "function" && typeof value.arrayBuffer === "function", "isBlobLike");
 var isFileLike = /* @__PURE__ */ __name((value) => value != null && typeof value === "object" && typeof value.name === "string" && typeof value.lastModified === "number" && isBlobLike(value), "isFileLike");
 var isResponseLike = /* @__PURE__ */ __name((value) => value != null && typeof value === "object" && typeof value.url === "string" && typeof value.blob === "function", "isResponseLike");
@@ -3795,19 +3795,19 @@ function propsForError(value) {
 }
 __name(propsForError, "propsForError");
 
-// ../node_modules/@anthropic-ai/sdk/resources/index.mjs
+// node_modules/@anthropic-ai/sdk/resources/index.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/shared.mjs
+// node_modules/@anthropic-ai/sdk/resources/shared.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/beta.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/beta.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/core/resource.mjs
+// node_modules/@anthropic-ai/sdk/core/resource.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var APIResource = class {
@@ -3819,11 +3819,11 @@ var APIResource = class {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/deployment-runs.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/deployment-runs.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/headers.mjs
+// node_modules/@anthropic-ai/sdk/internal/headers.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var brand_privateNullableHeaders = /* @__PURE__ */ Symbol.for("brand.privateNullableHeaders");
@@ -3913,7 +3913,7 @@ var buildHeaders = /* @__PURE__ */ __name((newHeaders) => {
   return { [brand_privateNullableHeaders]: true, values: targetHeaders, nulls: nullHeaders };
 }, "buildHeaders");
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/path.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/path.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
@@ -3972,7 +3972,7 @@ ${underline}`);
 }, "path"), "createPathTagFunction");
 var path = /* @__PURE__ */ createPathTagFunction(encodeURIPath);
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/deployment-runs.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/deployment-runs.mjs
 var DeploymentRuns = class extends APIResource {
   static {
     __name(this, "DeploymentRuns");
@@ -4022,7 +4022,7 @@ var DeploymentRuns = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/deployments.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/deployments.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Deployments = class extends APIResource {
@@ -4215,7 +4215,7 @@ var Deployments = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/dreams.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/dreams.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Dreams = class extends APIResource {
@@ -4328,11 +4328,11 @@ var Dreams = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/files.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/files.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/stainless-helper-header.mjs
+// node_modules/@anthropic-ai/sdk/internal/stainless-helper-header.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var STAINLESS_HELPER_HEADER = "x-stainless-helper";
@@ -4388,7 +4388,7 @@ function stainlessHelperHeaderFromFile(file) {
 }
 __name(stainlessHelperHeaderFromFile, "stainlessHelperHeaderFromFile");
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/files.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/files.mjs
 var Files = class extends APIResource {
   static {
     __name(this, "Files");
@@ -4505,7 +4505,7 @@ var Files = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/models.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/models.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Models = class extends APIResource {
@@ -4562,7 +4562,7 @@ var Models = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/user-profiles.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/user-profiles.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var UserProfiles = class extends APIResource {
@@ -4677,7 +4677,7 @@ var UserProfiles = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/webhooks.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/webhooks.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var import_standardwebhooks = __toESM(require_dist(), 1);
@@ -4697,11 +4697,11 @@ var Webhooks = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/agents/agents.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/agents/agents.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/agents/versions.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/agents/versions.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Versions = class extends APIResource {
@@ -4734,7 +4734,7 @@ var Versions = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/agents/agents.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/agents/agents.mjs
 var Agents = class extends APIResource {
   static {
     __name(this, "Agents");
@@ -4857,20 +4857,20 @@ var Agents = class extends APIResource {
 };
 Agents.Versions = Versions;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/environments/environments.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/environments/environments.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/environments/work.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/environments/work.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/lib/environments/poller.mjs
+// node_modules/@anthropic-ai/sdk/lib/environments/poller.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/abort.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/abort.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 function linkAbort(external, controller) {
@@ -4888,7 +4888,7 @@ function linkAbort(external, controller) {
 }
 __name(linkAbort, "linkAbort");
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/backoff.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/backoff.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
@@ -4917,7 +4917,7 @@ function applyJitter(ms) {
 }
 __name(applyJitter, "applyJitter");
 
-// ../node_modules/@anthropic-ai/sdk/lib/helper-client.mjs
+// node_modules/@anthropic-ai/sdk/lib/helper-client.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
@@ -4947,7 +4947,7 @@ function copyClientForHelper(client, { authToken, helper }) {
 }
 __name(copyClientForHelper, "copyClientForHelper");
 
-// ../node_modules/@anthropic-ai/sdk/lib/environments/poller.mjs
+// node_modules/@anthropic-ai/sdk/lib/environments/poller.mjs
 var _WorkPoller_runnerClient;
 var _WorkPoller_consumed;
 var _WorkPoller_controller;
@@ -5079,17 +5079,17 @@ function defaultWorkerId() {
 }
 __name(defaultWorkerId, "defaultWorkerId");
 
-// ../node_modules/@anthropic-ai/sdk/lib/environments/worker.mjs
+// node_modules/@anthropic-ai/sdk/lib/environments/worker.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
 
-// ../node_modules/@anthropic-ai/sdk/lib/tools/SessionToolRunner.mjs
+// node_modules/@anthropic-ai/sdk/lib/tools/SessionToolRunner.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/async-queue.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/async-queue.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var _AsyncQueue_items;
@@ -5160,11 +5160,11 @@ var AsyncQueue = class {
 };
 _AsyncQueue_items = /* @__PURE__ */ new WeakMap(), _AsyncQueue_waiters = /* @__PURE__ */ new WeakMap(), _AsyncQueue_closed = /* @__PURE__ */ new WeakMap();
 
-// ../node_modules/@anthropic-ai/sdk/lib/tools/BetaRunnableTool.mjs
+// node_modules/@anthropic-ai/sdk/lib/tools/BetaRunnableTool.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/lib/tools/ToolError.mjs
+// node_modules/@anthropic-ai/sdk/lib/tools/ToolError.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var ToolError = class extends Error {
@@ -5183,7 +5183,7 @@ var ToolError = class extends Error {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/lib/tools/BetaRunnableTool.mjs
+// node_modules/@anthropic-ai/sdk/lib/tools/BetaRunnableTool.mjs
 function toolName(tool) {
   return "name" in tool ? tool.name : tool.mcp_server_name;
 }
@@ -5203,7 +5203,7 @@ async function runRunnableTool(tool, rawInput, context) {
 }
 __name(runRunnableTool, "runRunnableTool");
 
-// ../node_modules/@anthropic-ai/sdk/lib/tools/SessionToolRunner.mjs
+// node_modules/@anthropic-ai/sdk/lib/tools/SessionToolRunner.mjs
 var _IdleClock_maxIdleMs;
 var _IdleClock_onExpire;
 var _IdleClock_blockers;
@@ -5737,7 +5737,7 @@ function toSessionContent(content) {
 }
 __name(toSessionContent, "toSessionContent");
 
-// ../node_modules/@anthropic-ai/sdk/lib/environments/worker.mjs
+// node_modules/@anthropic-ai/sdk/lib/environments/worker.mjs
 var _EnvironmentWorker_instances;
 var _EnvironmentWorker_signal;
 var _EnvironmentWorker_handleItem;
@@ -5941,7 +5941,7 @@ async function heartbeatLoop(client, work, ctrl, logger, requestOptions) {
 }
 __name(heartbeatLoop, "heartbeatLoop");
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/environments/work.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/environments/work.mjs
 var Work = class extends APIResource {
   static {
     __name(this, "Work");
@@ -6204,7 +6204,7 @@ var Work = class extends APIResource {
 Work.WorkPoller = WorkPoller;
 Work.EnvironmentWorker = EnvironmentWorker;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/environments/environments.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/environments/environments.mjs
 var Environments = class extends APIResource {
   static {
     __name(this, "Environments");
@@ -6346,11 +6346,11 @@ var Environments = class extends APIResource {
 };
 Environments.Work = Work;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/memory-stores/memory-stores.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/memory-stores/memory-stores.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/memory-stores/memories.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/memory-stores/memories.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Memories = class extends APIResource {
@@ -6477,7 +6477,7 @@ var Memories = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/memory-stores/memory-versions.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/memory-stores/memory-versions.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var MemoryVersions = class extends APIResource {
@@ -6555,7 +6555,7 @@ var MemoryVersions = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/memory-stores/memory-stores.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/memory-stores/memory-stores.mjs
 var MemoryStores = class extends APIResource {
   static {
     __name(this, "MemoryStores");
@@ -6690,20 +6690,20 @@ var MemoryStores = class extends APIResource {
 MemoryStores.Memories = Memories;
 MemoryStores.MemoryVersions = MemoryVersions;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/messages/messages.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/messages/messages.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/error.mjs
+// node_modules/@anthropic-ai/sdk/error.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/decoders/jsonl.mjs
+// node_modules/@anthropic-ai/sdk/internal/decoders/jsonl.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
@@ -6741,7 +6741,7 @@ var JSONLDecoder = class _JSONLDecoder {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs
 var Batches = class extends APIResource {
   static {
     __name(this, "Batches");
@@ -6939,7 +6939,7 @@ var Batches = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/internal/constants.mjs
+// node_modules/@anthropic-ai/sdk/internal/constants.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var MODEL_NONSTREAMING_TOKENS = {
@@ -6953,7 +6953,7 @@ var MODEL_NONSTREAMING_TOKENS = {
   "claude-opus-4-1@20250805": 8192
 };
 
-// ../node_modules/@anthropic-ai/sdk/lib/beta-parser.mjs
+// node_modules/@anthropic-ai/sdk/lib/beta-parser.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
@@ -7033,20 +7033,20 @@ function parseBetaOutputFormat(params, content) {
 }
 __name(parseBetaOutputFormat, "parseBetaOutputFormat");
 
-// ../node_modules/@anthropic-ai/sdk/lib/BetaMessageStream.mjs
+// node_modules/@anthropic-ai/sdk/lib/BetaMessageStream.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_errors();
 
-// ../node_modules/@anthropic-ai/sdk/streaming.mjs
+// node_modules/@anthropic-ai/sdk/streaming.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/internal/message-stream-utils.mjs
+// node_modules/@anthropic-ai/sdk/internal/message-stream-utils.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/_vendor/partial-json-parser/parser.mjs
+// node_modules/@anthropic-ai/sdk/_vendor/partial-json-parser/parser.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var tokenize = /* @__PURE__ */ __name((input) => {
@@ -7270,7 +7270,7 @@ var generate = /* @__PURE__ */ __name((tokens) => {
 }, "generate");
 var partialParse = /* @__PURE__ */ __name((input) => JSON.parse(generate(unstrip(strip(tokenize(input))))), "partialParse");
 
-// ../node_modules/@anthropic-ai/sdk/internal/message-stream-utils.mjs
+// node_modules/@anthropic-ai/sdk/internal/message-stream-utils.mjs
 var JSON_BUF_PROPERTY = "__json_buf";
 function withLazyInput(prev, jsonBuf) {
   const next = {};
@@ -7296,7 +7296,7 @@ function withLazyInput(prev, jsonBuf) {
 }
 __name(withLazyInput, "withLazyInput");
 
-// ../node_modules/@anthropic-ai/sdk/lib/BetaMessageStream.mjs
+// node_modules/@anthropic-ai/sdk/lib/BetaMessageStream.mjs
 var _BetaMessageStream_instances;
 var _BetaMessageStream_currentMessageSnapshot;
 var _BetaMessageStream_params;
@@ -7938,12 +7938,12 @@ function checkNever(x) {
 }
 __name(checkNever, "checkNever");
 
-// ../node_modules/@anthropic-ai/sdk/lib/tools/BetaToolRunner.mjs
+// node_modules/@anthropic-ai/sdk/lib/tools/BetaToolRunner.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
 
-// ../node_modules/@anthropic-ai/sdk/internal/utils/promise.mjs
+// node_modules/@anthropic-ai/sdk/internal/utils/promise.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 function promiseWithResolvers() {
@@ -7957,7 +7957,7 @@ function promiseWithResolvers() {
 }
 __name(promiseWithResolvers, "promiseWithResolvers");
 
-// ../node_modules/@anthropic-ai/sdk/lib/tools/CompactionControl.mjs
+// node_modules/@anthropic-ai/sdk/lib/tools/CompactionControl.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var DEFAULT_TOKEN_THRESHOLD = 1e5;
@@ -7985,7 +7985,7 @@ Any promises made to the user
 Be concise but complete\u2014err on the side of including information that would prevent duplicate work or repeated mistakes. Write in a way that enables immediate resumption of the task.
 Wrap your summary in <summary></summary> tags.`;
 
-// ../node_modules/@anthropic-ai/sdk/lib/tools/BetaToolRunner.mjs
+// node_modules/@anthropic-ai/sdk/lib/tools/BetaToolRunner.mjs
 var _BetaToolRunner_instances;
 var _BetaToolRunner_consumed;
 var _BetaToolRunner_mutated;
@@ -8400,7 +8400,7 @@ function referencedToolName(ref) {
 }
 __name(referencedToolName, "referencedToolName");
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/messages/messages.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/messages/messages.mjs
 var DEPRECATED_MODELS = {
   "claude-1.3": "November 6th, 2024",
   "claude-1.3-100k": "November 6th, 2024",
@@ -8553,11 +8553,11 @@ Messages.Batches = Batches;
 Messages.BetaToolRunner = BetaToolRunner;
 Messages.ToolError = ToolError;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/sessions/sessions.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/sessions/sessions.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/sessions/events.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/sessions/events.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Events = class extends APIResource {
@@ -8671,7 +8671,7 @@ var Events = class extends APIResource {
 };
 Events.SessionToolRunner = SessionToolRunner;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/sessions/resources.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/sessions/resources.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Resources = class extends APIResource {
@@ -8800,11 +8800,11 @@ var Resources = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/sessions/threads/threads.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/sessions/threads/threads.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/sessions/threads/events.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/sessions/threads/events.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Events2 = class extends APIResource {
@@ -8862,7 +8862,7 @@ var Events2 = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/sessions/threads/threads.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/sessions/threads/threads.mjs
 var Threads = class extends APIResource {
   static {
     __name(this, "Threads");
@@ -8942,7 +8942,7 @@ var Threads = class extends APIResource {
 };
 Threads.Events = Events2;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/sessions/sessions.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/sessions/sessions.mjs
 var Sessions = class extends APIResource {
   static {
     __name(this, "Sessions");
@@ -9088,11 +9088,11 @@ Sessions.Events = Events;
 Sessions.Resources = Resources;
 Sessions.Threads = Threads;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/skills/versions.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/skills/versions.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Versions2 = class extends APIResource {
@@ -9217,7 +9217,7 @@ var Versions2 = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs
 var Skills = class extends APIResource {
   static {
     __name(this, "Skills");
@@ -9308,11 +9308,11 @@ var Skills = class extends APIResource {
 };
 Skills.Versions = Versions2;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/tunnels/tunnels.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/tunnels/tunnels.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/tunnels/certificates.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/tunnels/certificates.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Certificates = class extends APIResource {
@@ -9438,7 +9438,7 @@ var Certificates = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/tunnels/tunnels.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/tunnels/tunnels.mjs
 var Tunnels = class extends APIResource {
   static {
     __name(this, "Tunnels");
@@ -9611,11 +9611,11 @@ var Tunnels = class extends APIResource {
 };
 Tunnels.Certificates = Certificates;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/vaults/vaults.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/vaults/vaults.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/vaults/credentials.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/vaults/credentials.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Credentials = class extends APIResource {
@@ -9789,7 +9789,7 @@ var Credentials = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/vaults/vaults.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/vaults/vaults.mjs
 var Vaults = class extends APIResource {
   static {
     __name(this, "Vaults");
@@ -9930,7 +9930,7 @@ var Vaults = class extends APIResource {
 };
 Vaults.Credentials = Credentials;
 
-// ../node_modules/@anthropic-ai/sdk/resources/beta/beta.mjs
+// node_modules/@anthropic-ai/sdk/resources/beta/beta.mjs
 var Beta = class extends APIResource {
   static {
     __name(this, "Beta");
@@ -9970,7 +9970,7 @@ Beta.UserProfiles = UserProfiles;
 Beta.Dreams = Dreams;
 Beta.Tunnels = Tunnels;
 
-// ../node_modules/@anthropic-ai/sdk/resources/completions.mjs
+// node_modules/@anthropic-ai/sdk/resources/completions.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Completions = class extends APIResource {
@@ -9992,16 +9992,16 @@ var Completions = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/messages/messages.mjs
+// node_modules/@anthropic-ai/sdk/resources/messages/messages.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 
-// ../node_modules/@anthropic-ai/sdk/lib/MessageStream.mjs
+// node_modules/@anthropic-ai/sdk/lib/MessageStream.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_errors();
 
-// ../node_modules/@anthropic-ai/sdk/lib/parser.mjs
+// node_modules/@anthropic-ai/sdk/lib/parser.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
@@ -10069,7 +10069,7 @@ function parseOutputFormat(params, content) {
 }
 __name(parseOutputFormat, "parseOutputFormat");
 
-// ../node_modules/@anthropic-ai/sdk/lib/MessageStream.mjs
+// node_modules/@anthropic-ai/sdk/lib/MessageStream.mjs
 var _MessageStream_instances;
 var _MessageStream_currentMessageSnapshot;
 var _MessageStream_params;
@@ -10666,7 +10666,7 @@ function checkNever2(x) {
 }
 __name(checkNever2, "checkNever");
 
-// ../node_modules/@anthropic-ai/sdk/resources/messages/batches.mjs
+// node_modules/@anthropic-ai/sdk/resources/messages/batches.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Batches2 = class extends APIResource {
@@ -10820,7 +10820,7 @@ var Batches2 = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/resources/messages/messages.mjs
+// node_modules/@anthropic-ai/sdk/resources/messages/messages.mjs
 var Messages2 = class extends APIResource {
   static {
     __name(this, "Messages");
@@ -10956,7 +10956,7 @@ var DEPRECATED_MODELS2 = {
 var MODELS_TO_WARN_WITH_THINKING_ENABLED2 = ["claude-mythos-preview", "claude-opus-4-6"];
 Messages2.Batches = Batches2;
 
-// ../node_modules/@anthropic-ai/sdk/resources/models.mjs
+// node_modules/@anthropic-ai/sdk/resources/models.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 var Models2 = class extends APIResource {
@@ -10998,7 +10998,7 @@ var Models2 = class extends APIResource {
   }
 };
 
-// ../node_modules/@anthropic-ai/sdk/client.mjs
+// node_modules/@anthropic-ai/sdk/client.mjs
 var _BaseAnthropic_instances;
 var _a;
 var _BaseAnthropic_encoder;
@@ -11766,22 +11766,19 @@ Anthropic.Messages = Messages2;
 Anthropic.Models = Models2;
 Anthropic.Beta = Beta;
 
-// ../node_modules/@anthropic-ai/sdk/lib/middleware.mjs
+// node_modules/@anthropic-ai/sdk/lib/middleware.mjs
 init_checked_fetch();
 init_modules_watch_stub();
 init_error();
 init_errors();
 var encoder = new TextEncoder();
 
-// ../node_modules/@anthropic-ai/sdk/index.mjs
+// node_modules/@anthropic-ai/sdk/index.mjs
 init_error();
 
 // src/index.ts
 var src_default = {
-  async fetch(request, env, ctx) {
-    if (request.method !== "POST") {
-      return new Response("Method not allowed", { status: 405 });
-    }
+  async fetch(request, env) {
     if (request.method === "OPTIONS") {
       return new Response(null, {
         headers: {
@@ -11790,6 +11787,9 @@ var src_default = {
           "Access-Control-Allow-Headers": "Content-Type"
         }
       });
+    }
+    if (request.method !== "POST") {
+      return new Response("Method not allowed", { status: 405 });
     }
     const apiKey = env.ANTHROPIC_API_KEY;
     if (!apiKey) {
@@ -11877,7 +11877,7 @@ var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx)
 }, "jsonError");
 var middleware_miniflare3_json_error_default = jsonError;
 
-// .wrangler/tmp/bundle-3fnFUr/middleware-insertion-facade.js
+// .wrangler/tmp/bundle-lKR4ja/middleware-insertion-facade.js
 var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
   middleware_ensure_req_body_drained_default,
   middleware_miniflare3_json_error_default
@@ -11911,7 +11911,7 @@ function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
 }
 __name(__facade_invoke__, "__facade_invoke__");
 
-// .wrangler/tmp/bundle-3fnFUr/middleware-loader.entry.ts
+// .wrangler/tmp/bundle-lKR4ja/middleware-loader.entry.ts
 var __Facade_ScheduledController__ = class ___Facade_ScheduledController__ {
   constructor(scheduledTime, cron, noRetry) {
     this.scheduledTime = scheduledTime;
