@@ -17,16 +17,23 @@ export function TalkToPythia({ onClose }: { onClose: () => void }) {
 
     try {
       const response = await callPythia(
-        userMessage,
-        PYTHIA_MASTER_SYSTEM_PROMPT,
-        messages
-      );
+  userMessage,
+  PYTHIA_MASTER_SYSTEM_PROMPT,
+  messages
+);
 
-      setMessages([
-        ...messages,
-        { role: "user", content: userMessage },
-        { role: "assistant", content: response.claudeResponse?.content?.[0]?.text || "I didn't understand that." },
-      ]);
+let assistantMessage = response.claudeResponse?.content?.[0]?.text || "I didn't understand that.";
+
+// If ALCS action was triggered, add it to the message
+if (response.alcsResult) {
+  assistantMessage += `\n\n**[Action Triggered]** ${response.alcsResult}`;
+}
+
+setMessages([
+  ...messages,
+  { role: "user", content: userMessage },
+  { role: "assistant", content: assistantMessage },
+]);
     } catch (error) {
       console.error("Error:", error);
       alert(`Error: ${error}`);

@@ -1,4 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { classifyALCSIntent, type ALCSIntent } from "./alcs-intent-classifier";
+import { handleHealthcareCoordination } from "./healthcare-coordinator";
 
 interface Env {
   ANTHROPIC_API_KEY: string;
@@ -24,8 +26,22 @@ async function synthesizeVoice(
       }),
     }
   );
-
   return await response.arrayBuffer();
+}
+
+async function executeALCSTool(
+  intent: ALCSIntent,
+  apiKey: string
+): Promise<any> {
+  switch (intent.toolType) {
+    case "healthcare_coordinator":
+      return await handleHealthcareCoordination(
+        { action: intent.action as any, details: intent.details },
+        { lat: 0, lng: 0 }
+      );
+    default:
+      return null;
+  }
 }
 
 export default {
@@ -60,14 +76,31 @@ export default {
         messages: body.messages,
       });
 
-      return new Response(JSON.stringify(response), {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
-        },
-      });
+      const intent = await classifyALCSIntent(
+        body.messages[body.messages.length - 1].content,
+        apiKey
+      );
+
+      let alcsResult = null;
+      if (intent.toolType !== "none") {
+        alcsResult = await executeALCSTool(intent, apiKey);
+      }
+
+      return new Response(
+        JSON.stringify({
+          claudeResponse: response,
+          alcsResult: alcsResult,
+          intent: intent,
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+          },
+        }
+      );
     } catch (error) {
       return new Response(JSON.stringify({ error: String(error) }), {
         status: 500,
