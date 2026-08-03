@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { classifyALCSIntent, type ALCSIntent } from "./alcs-intent-classifier";
-import { handleHealthcareCoordination } from "./healthcare-coordinator";
+import { classifyALCSIntent, type ALCSIntent } from "./alcs-intent-classifier.ts";
+import { handleHealthcareCoordination } from "./healthcare-coordinator.ts";
 import type { ExportedHandler } from "cloudflare:workers";
 
 interface Env {
