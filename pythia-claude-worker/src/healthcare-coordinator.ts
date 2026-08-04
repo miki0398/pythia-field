@@ -21,8 +21,10 @@ export async function handleHealthcareCoordination(
     
     case "find_lab":
   const labType = request.details.labType || "blood";
-  return `🔍 Finding nearby ${labType} test facilities. Opening Google Maps: https://www.google.com/maps/search/${encodeURIComponent(labType + " test facility")}`;
-    
+  const mapsQuery = encodeURIComponent(`${labType} test facility`);
+  const mapsUrl = `https://www.google.com/maps/search/${mapsQuery}`;
+  return `🔍 Finding nearby ${labType} test facilities. Maps: ${mapsUrl}`;
+  
     case "schedule_appointment":
       return `Scheduling ${request.details.appointmentType || "your"} appointment...`;
     
