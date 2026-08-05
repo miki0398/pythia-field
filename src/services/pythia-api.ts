@@ -1,3 +1,24 @@
+import { supabase } from "./supabase-client";
+async function saveConversationToSupabase(
+  patientId: string,
+  role: "user" | "assistant",
+  content: string,
+  nfbSignals?: Record<string, any>
+) {
+  try {
+    const { error } = await supabase.from("conversations").insert({
+      patient_id: patientId,
+      role: role,
+      content: content,
+      nfb_signals: nfbSignals,
+    });
+
+    if (error) console.error("Save error:", error);
+  } catch (error) {
+    console.error("Failed to save conversation:", error);
+  }
+}
+
 const WORKER_URL = "http://localhost:8787";
 
 export async function callPythia(
@@ -24,3 +45,4 @@ export async function callPythia(
 
   return await response.json();
 }
+export { saveConversationToSupabase };
