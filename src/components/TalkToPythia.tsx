@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { callPythia } from "../services/pythia-api";
 
+
 const PYTHIA_MASTER_SYSTEM_PROMPT = `Your name is Pythia. You are a compassionate neurological health companion. You speak warmly and attentively. Never use medical jargon. Listen deeply.`;
 
 export function TalkToPythia({ onClose }: { onClose: () => void }) {
@@ -24,11 +25,17 @@ export function TalkToPythia({ onClose }: { onClose: () => void }) {
 
       const assistantMessage = response.claudeResponse?.content?.[0]?.text || "I didn't understand that.";
 
-      setMessages([
+      const newMessages = [
         ...messages,
-        { role: "user", content: userMessage },
-        { role: "assistant", content: assistantMessage },
-      ]);
+        { role: "user" as const, content: userMessage },
+        { role: "assistant" as const, content: assistantMessage },
+      ];
+
+      setMessages(newMessages);
+
+      // Save to Supabase (fire and forget)
+     
+
     } catch (error) {
       console.error("Error:", error);
       alert(`Error: ${error}`);
