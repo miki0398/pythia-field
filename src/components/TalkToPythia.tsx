@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { callPythia } from "../services/pythia-api";
 import { saveConversationToSupabase } from "../services/pythia-api";
+import { synthesizeVoice, playAudio } from "../services/elevenlabs-voice";
 
 
 const PYTHIA_MASTER_SYSTEM_PROMPT = `Your name is Pythia. You are a compassionate neurological health companion. You speak warmly and attentively. Never use medical jargon. Listen deeply.`;
@@ -18,19 +19,33 @@ export function TalkToPythia({ onClose }: { onClose: () => void }) {
     setLoading(true);
 
     try {
-      const response = await callPythia(
-        userMessage,
-        PYTHIA_MASTER_SYSTEM_PROMPT,
-        messages
-      );
+  const response = await callPythia(
+    userMessage,
+    PYTHIA_MASTER_SYSTEM_PROMPT,
+    messages
+  );
 
-      const assistantMessage = response.claudeResponse?.content?.[0]?.text || "I didn't understand that.";
+  const assistantMessage = response.claudeResponse?.content?.[0]?.text || "I didn't understand that.";
 
-      const newMessages = [
-        ...messages,
-        { role: "user" as const, content: userMessage },
-        { role: "assistant" as const, content: assistantMessage },
-      ];
+  const newMessages = [
+    ...messages,
+    { role: "user" as const, content: userMessage },
+    { role: "assistant" as const, content: assistantMessage },
+  ];
+
+  setMessages(newMessages);
+
+  // Save to Supabase
+  saveConversationToSupabase("550e8400-e29b-41d4-a716-446655440000", "user", userMessage).catch(console.error);
+  saveConversationToSupabase("550e8400-e29b-41d4-a716-446655440000", "assistant", assistantMessage).catch(console.error);
+
+  // Play voice
+  //try {
+  //  const audioBuffer = await synthesizeVoice(assistantMessage);
+  //  await playAudio(audioBuffer);
+  //} catch (error) {
+  //  console.error("Voice playback error:", error);
+  //}
 
       setMessages(newMessages);
 

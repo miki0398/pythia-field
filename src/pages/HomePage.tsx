@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import CavePage from './CavePage'
 import CareTeamPage from './CareTeamPage'
-import { TalkToPythia } from '../components/TalkToPythia.tsx'
+import { TalkToPythia } from "../components/TalkToPythia";
 
 export default function HomePage() {
   const glowRef = useRef<HTMLDivElement>(null)
