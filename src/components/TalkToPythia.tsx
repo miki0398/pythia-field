@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { callPythia } from "../services/pythia-api";
+import { saveConversationToSupabase } from "../services/pythia-api";
 
 
 const PYTHIA_MASTER_SYSTEM_PROMPT = `Your name is Pythia. You are a compassionate neurological health companion. You speak warmly and attentively. Never use medical jargon. Listen deeply.`;
@@ -33,8 +34,9 @@ export function TalkToPythia({ onClose }: { onClose: () => void }) {
 
       setMessages(newMessages);
 
-      // Save to Supabase (fire and forget)
-     
+     // Save to Supabase
+saveConversationToSupabase("c774d3c5-1eb9-47d4-864e-d4601760a7af", "user", userMessage).catch(console.error);
+saveConversationToSupabase("c774d3c5-1eb9-47d4-864e-d4601760a7af", "assistant", assistantMessage).catch(console.error);
 
     } catch (error) {
       console.error("Error:", error);
