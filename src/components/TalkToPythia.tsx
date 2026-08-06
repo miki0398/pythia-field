@@ -40,12 +40,12 @@ export function TalkToPythia({ onClose }: { onClose: () => void }) {
   saveConversationToSupabase("550e8400-e29b-41d4-a716-446655440000", "assistant", assistantMessage).catch(console.error);
 
   // Play voice
-  //try {
-  //  const audioBuffer = await synthesizeVoice(assistantMessage);
-  //  await playAudio(audioBuffer);
-  //} catch (error) {
-  //  console.error("Voice playback error:", error);
-  //}
+  try {
+  const audioBuffer = await synthesizeVoice(assistantMessage);
+  await playAudio(audioBuffer);
+} catch (error) {
+  console.error("Voice playback error:", error);
+  }
 
       setMessages(newMessages);
 

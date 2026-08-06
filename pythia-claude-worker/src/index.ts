@@ -26,6 +26,7 @@ async function synthesizeVoice(
       }),
     }
   );
+
   return await response.arrayBuffer();
 }
 
@@ -102,6 +103,7 @@ export default {
         }
       );
     } catch (error) {
+      console.error("Worker error:", error);
       return new Response(JSON.stringify({ error: String(error) }), {
         status: 500,
         headers: {
