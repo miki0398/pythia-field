@@ -7,29 +7,6 @@ interface Env {
   ELEVENLABS_API_KEY: string;
 }
 
-async function synthesizeVoice(
-  text: string,
-  voiceId: string,
-  env: Env
-): Promise<ArrayBuffer> {
-  const response = await fetch(
-    `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
-    {
-      method: "POST",
-      headers: {
-        "xi-api-key": env.ELEVENLABS_API_KEY,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        text: text,
-        model_id: "eleven_multilingual_v2",
-      }),
-    }
-  );
-
-  return await response.arrayBuffer();
-}
-
 async function executeALCSTool(
   intent: ALCSIntent,
   apiKey: string
