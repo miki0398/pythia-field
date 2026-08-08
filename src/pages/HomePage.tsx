@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import CavePage from './CavePage'
 import CareTeamPage from './CareTeamPage'
 import { TalkToPythia } from "../components/TalkToPythia";
+import { PrescriptionUpload } from "../components/PrescriptionUpload";
 
 export default function HomePage() {
   const glowRef = useRef<HTMLDivElement>(null)
@@ -20,6 +21,8 @@ export default function HomePage() {
   const [showCave, setShowCave] = useState(false)
   const [showCareTeam, setShowCareTeam] = useState(false)
   const [showTalkModal, setShowTalkModal] = useState(false)
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  
 
   useEffect(() => {
     const el = glowRef.current
@@ -266,6 +269,27 @@ export default function HomePage() {
             🏥 Care Team
           </button>
 
+          <div
+            onClick={() => setShowUploadModal(true)}
+            style={{
+              flex: 1,
+              background: '#b8962e',
+              border: 'none',
+              borderRadius: '60px',
+              padding: '14px 8px',
+              color: '#1a5c6b',
+              fontSize: '13px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              minHeight: '52px'
+            }}>
+            📋 Upload Prescription
+          </div>
+
         </div>
       </div>
 
@@ -273,22 +297,38 @@ export default function HomePage() {
       {showCareTeam && <CareTeamPage onClose={() => setShowCareTeam(false)} />}
 
       {showTalkModal && (
-  <div style={{
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: 'rgba(0,0,0,0.7)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 1000
-  }}>
-    <TalkToPythia onClose={() => setShowTalkModal(false)} />
-  </div>
-)}
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0,0,0,0.7)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <TalkToPythia onClose={() => setShowTalkModal(false)} />
+        </div>
+      )}
 
+      {showUploadModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0,0,0,0.7)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <PrescriptionUpload onClose={() => setShowUploadModal(false)} />
+        </div>
+      )}
     </div>
   )
 }
