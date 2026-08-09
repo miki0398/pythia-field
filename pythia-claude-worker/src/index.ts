@@ -49,6 +49,40 @@ async function synthesizeVoiceWithElevenLabs(
   return await response.arrayBuffer();
 }
 
+// Why: Handle file upload server-side — no CORS, secrets safe
+async function handleDocumentUpload(request: Request, env: Env): Promise<Response> {
+  try {
+    const formData = await request.formData();
+    const file = formData.get("file") as File;
+
+    if (!file) {
+      return new Response(JSON.stringify({ error: "No file provided" }), { status: 400 });
+    }
+
+    // Convert file to buffer
+    const buffer = await file.arrayBuffer();
+
+    // TODO: Upload to S3, call Textract, parse with Claude
+    // For now, return placeholder
+
+    return new Response(JSON.stringify({
+      status: "success",
+      message: "OCR endpoint ready - Textract integration next"
+    }), {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+  } catch (error) {
+    console.error("Upload error:", error);
+    return new Response(JSON.stringify({ error: String(error) }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (request.method === "OPTIONS") {
@@ -94,31 +128,7 @@ export default {
 
     // Handle document upload requests
     if (url.pathname === "/upload") {
-      try {
-        const formData = await request.formData();
-        const file = formData.get("file") as File;
-
-        if (!file) {
-          return new Response(JSON.stringify({ error: "No file provided" }), { status: 400 });
-        }
-
-        // TODO: Textract extraction coming next
-        return new Response(JSON.stringify({
-          status: "ready",
-          message: "OCR endpoint ready"
-        }), {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-        });
-      } catch (error) {
-        console.error("Upload error:", error);
-        return new Response(JSON.stringify({ error: String(error) }), {
-          status: 500,
-          headers: { "Content-Type": "application/json" },
-        });
-      }
+      return await handleDocumentUpload(request, env);
     }
 
     const apiKey = env.ANTHROPIC_API_KEY;

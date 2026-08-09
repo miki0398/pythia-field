@@ -41,7 +41,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// .wrangler/tmp/bundle-3ZCFLD/checked-fetch.js
+// .wrangler/tmp/bundle-ML7wxP/checked-fetch.js
 function checkURL(request, init) {
   const url = request instanceof URL ? request : new URL(
     (typeof request === "string" ? new Request(request, init) : request).url
@@ -59,7 +59,7 @@ function checkURL(request, init) {
 }
 var urls;
 var init_checked_fetch = __esm({
-  ".wrangler/tmp/bundle-3ZCFLD/checked-fetch.js"() {
+  ".wrangler/tmp/bundle-ML7wxP/checked-fetch.js"() {
     urls = /* @__PURE__ */ new Set();
     __name(checkURL, "checkURL");
     globalThis.fetch = new Proxy(globalThis.fetch, {
@@ -1178,11 +1178,11 @@ var init_node_browser = __esm({
   }
 });
 
-// .wrangler/tmp/bundle-3ZCFLD/middleware-loader.entry.ts
+// .wrangler/tmp/bundle-ML7wxP/middleware-loader.entry.ts
 init_checked_fetch();
 init_modules_watch_stub();
 
-// .wrangler/tmp/bundle-3ZCFLD/middleware-insertion-facade.js
+// .wrangler/tmp/bundle-ML7wxP/middleware-insertion-facade.js
 init_checked_fetch();
 init_modules_watch_stub();
 
@@ -11878,6 +11878,32 @@ async function synthesizeVoiceWithElevenLabs(text, voiceId, env) {
   return await response.arrayBuffer();
 }
 __name(synthesizeVoiceWithElevenLabs, "synthesizeVoiceWithElevenLabs");
+async function handleDocumentUpload(request, env) {
+  try {
+    const formData = await request.formData();
+    const file = formData.get("file");
+    if (!file) {
+      return new Response(JSON.stringify({ error: "No file provided" }), { status: 400 });
+    }
+    const buffer = await file.arrayBuffer();
+    return new Response(JSON.stringify({
+      status: "success",
+      message: "OCR endpoint ready - Textract integration next"
+    }), {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
+    });
+  } catch (error) {
+    console.error("Upload error:", error);
+    return new Response(JSON.stringify({ error: String(error) }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
+  }
+}
+__name(handleDocumentUpload, "handleDocumentUpload");
 var src_default = {
   async fetch(request, env) {
     if (request.method === "OPTIONS") {
@@ -11916,28 +11942,7 @@ var src_default = {
       }
     }
     if (url.pathname === "/upload") {
-      try {
-        const formData = await request.formData();
-        const file = formData.get("file");
-        if (!file) {
-          return new Response(JSON.stringify({ error: "No file provided" }), { status: 400 });
-        }
-        return new Response(JSON.stringify({
-          status: "ready",
-          message: "OCR endpoint ready"
-        }), {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          }
-        });
-      } catch (error) {
-        console.error("Upload error:", error);
-        return new Response(JSON.stringify({ error: String(error) }), {
-          status: 500,
-          headers: { "Content-Type": "application/json" }
-        });
-      }
+      return await handleDocumentUpload(request, env);
     }
     const apiKey = env.ANTHROPIC_API_KEY;
     if (!apiKey) {
@@ -12041,7 +12046,7 @@ var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx)
 }, "jsonError");
 var middleware_miniflare3_json_error_default = jsonError;
 
-// .wrangler/tmp/bundle-3ZCFLD/middleware-insertion-facade.js
+// .wrangler/tmp/bundle-ML7wxP/middleware-insertion-facade.js
 var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
   middleware_ensure_req_body_drained_default,
   middleware_miniflare3_json_error_default
@@ -12075,7 +12080,7 @@ function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
 }
 __name(__facade_invoke__, "__facade_invoke__");
 
-// .wrangler/tmp/bundle-3ZCFLD/middleware-loader.entry.ts
+// .wrangler/tmp/bundle-ML7wxP/middleware-loader.entry.ts
 var __Facade_ScheduledController__ = class ___Facade_ScheduledController__ {
   constructor(scheduledTime, cron, noRetry) {
     this.scheduledTime = scheduledTime;
