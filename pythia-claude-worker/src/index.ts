@@ -5,6 +5,10 @@ import { handleHealthcareCoordination } from "./healthcare-coordinator";
 interface Env {
   ANTHROPIC_API_KEY: string;
   ELEVENLABS_API_KEY: string;
+  AWS_ACCESS_KEY_ID: string;
+  AWS_SECRET_ACCESS_KEY: string;
+  AWS_S3_BUCKET: string;
+  AWS_REGION: string;
 }
 
 async function executeALCSTool(
@@ -43,13 +47,13 @@ async function synthesizeVoiceWithElevenLabs(
   );
 
   if (!response.ok) {
-    throw new Error(`ElevenLabs error: ${response.status}`);
+    const errText = await response.text();
+    throw new Error(`ElevenLabs ${response.status}: ${errText}`);
   }
 
   return await response.arrayBuffer();
 }
 
-// Why: Handle file upload server-side — no CORS, secrets safe
 async function handleDocumentUpload(request: Request, env: Env): Promise<Response> {
   try {
     const formData = await request.formData();
@@ -59,11 +63,9 @@ async function handleDocumentUpload(request: Request, env: Env): Promise<Respons
       return new Response(JSON.stringify({ error: "No file provided" }), { status: 400 });
     }
 
-    // Convert file to buffer
     const buffer = await file.arrayBuffer();
 
     // TODO: Upload to S3, call Textract, parse with Claude
-    // For now, return placeholder
 
     return new Response(JSON.stringify({
       status: "success",
@@ -101,7 +103,6 @@ export default {
 
     const url = new URL(request.url);
 
-    // Handle voice synthesis requests
     if (url.pathname === "/voice") {
       try {
         const body = await request.json() as any;
@@ -126,7 +127,6 @@ export default {
       }
     }
 
-    // Handle document upload requests
     if (url.pathname === "/upload") {
       return await handleDocumentUpload(request, env);
     }
