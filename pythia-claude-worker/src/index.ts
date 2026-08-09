@@ -61,12 +61,12 @@ export default {
       });
     }
 
- if (request.method !== "POST") {
+    if (request.method !== "POST") {
       return new Response("Method not allowed", { status: 405 });
     }
 
     const url = new URL(request.url);
-    
+
     // Handle voice synthesis requests
     if (url.pathname === "/voice") {
       try {
@@ -92,11 +92,37 @@ export default {
       }
     }
 
+    // Handle document upload requests
+    if (url.pathname === "/upload") {
+      try {
+        const formData = await request.formData();
+        const file = formData.get("file") as File;
+
+        if (!file) {
+          return new Response(JSON.stringify({ error: "No file provided" }), { status: 400 });
+        }
+
+        // TODO: Textract extraction coming next
+        return new Response(JSON.stringify({
+          status: "ready",
+          message: "OCR endpoint ready"
+        }), {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        });
+      } catch (error) {
+        console.error("Upload error:", error);
+        return new Response(JSON.stringify({ error: String(error) }), {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+    }
+
     const apiKey = env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      return new Response("API key not configured", { status: 500 });
-    }
-       if (!apiKey) {
       return new Response("API key not configured", { status: 500 });
     }
 
