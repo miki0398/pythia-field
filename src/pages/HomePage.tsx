@@ -3,6 +3,7 @@ import CavePage from './CavePage'
 import CareTeamPage from './CareTeamPage'
 import { TalkToPythia } from "../components/TalkToPythia";
 import { PrescriptionUpload } from "../components/PrescriptionUpload";
+import { initiateGmailOAuth } from "../services/gmail-connector";
 
 export default function HomePage() {
   const glowRef = useRef<HTMLDivElement>(null)
@@ -21,8 +22,7 @@ export default function HomePage() {
   const [showCave, setShowCave] = useState(false)
   const [showCareTeam, setShowCareTeam] = useState(false)
   const [showTalkModal, setShowTalkModal] = useState(false)
-  const [showUploadModal, setShowUploadModal] = useState(false);
-  
+  const [showUploadModal, setShowUploadModal] = useState(false)
 
   useEffect(() => {
     const el = glowRef.current
@@ -196,17 +196,20 @@ export default function HomePage() {
           }} />
         </div>
 
-        {/* THREE PILLS */}
+        {/* PILLS CONTAINER */}
         <div style={{
           display: 'flex',
           gap: '0.6rem',
-          width: '100%'
+          width: '100%',
+          flexWrap: 'wrap'
         }}>
 
+          {/* PILL 1: TALK TO PYTHIA */}
           <button
             onClick={() => setShowTalkModal(true)}
             style={{
               flex: 1,
+              minWidth: '100px',
               background: 'rgba(212,168,60,0.25)',
               border: '1px solid rgba(212,168,60,0.45)',
               borderRadius: '60px',
@@ -225,10 +228,12 @@ export default function HomePage() {
             🌿 Talk to Pythia
           </button>
 
+          {/* PILL 2: THE CAVE */}
           <button
             onClick={() => setShowCave(true)}
             style={{
               flex: 1,
+              minWidth: '100px',
               background: 'rgba(20,40,12,0.55)',
               border: '1px solid rgba(255,255,255,0.18)',
               borderRadius: '60px',
@@ -247,10 +252,12 @@ export default function HomePage() {
             🪨 The Cave
           </button>
 
+          {/* PILL 3: CARE TEAM */}
           <button
             onClick={() => setShowCareTeam(true)}
             style={{
               flex: 1,
+              minWidth: '100px',
               background: 'rgba(20,40,12,0.55)',
               border: '1px solid rgba(255,255,255,0.18)',
               borderRadius: '60px',
@@ -269,10 +276,12 @@ export default function HomePage() {
             🏥 Care Team
           </button>
 
+          {/* PILL 4: UPLOAD PRESCRIPTION */}
           <div
             onClick={() => setShowUploadModal(true)}
             style={{
               flex: 1,
+              minWidth: '100px',
               background: '#b8962e',
               border: 'none',
               borderRadius: '60px',
@@ -288,6 +297,29 @@ export default function HomePage() {
               minHeight: '52px'
             }}>
             📋 Upload Prescription
+          </div>
+
+          {/* PILL 5: CONNECT GMAIL */}
+          <div
+            onClick={() => initiateGmailOAuth()}
+            style={{
+              flex: 1,
+              minWidth: '100px',
+              background: '#4285F4',
+              border: 'none',
+              borderRadius: '60px',
+              padding: '14px 8px',
+              color: '#ffffff',
+              fontSize: '13px',
+              fontWeight: 500,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              minHeight: '52px'
+            }}>
+            📧 Connect Gmail
           </div>
 
         </div>
