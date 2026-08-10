@@ -65,11 +65,14 @@ async function handleDocumentUpload(request: Request, env: Env): Promise<Respons
 
     const buffer = await file.arrayBuffer();
 
-    // TODO: Upload to S3, call Textract, parse with Claude
+    // TODO: Textract integration (Phase 2)
+    // For now, return placeholder with file info
 
     return new Response(JSON.stringify({
-      status: "success",
-      message: "OCR endpoint ready - Textract integration next"
+      status: "pending",
+      message: "OCR processing (Textract integration in Phase 2)",
+      fileName: file.name,
+      fileSize: buffer.byteLength,
     }), {
       headers: {
         "Content-Type": "application/json",
