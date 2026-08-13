@@ -1,42 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { exchangeCodeForToken } from "../services/gmail-connector";
 
 export function OAuthCallbackPage() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    // Why: Extract auth code from URL and exchange for access token
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("code");
+    const handleCallback = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+      const error = params.get("error");
 
-    if (!code) {
-      setError("No authorization code received");
-      setLoading(false);
-      return;
-    }
+      if (error) {
+        console.error("OAuth error:", error);
+        navigate("/");
+        return;
+      }
 
-    handleCallback(code);
-  }, []);
+      if (code) {
+        try {
+          const accessToken = await exchangeCodeForToken(code);
+          console.log("Gmail access token obtained");
+          // Store token in localStorage for later use
+          localStorage.setItem("gmail_access_token", accessToken);
+          navigate("/");
+        } catch (err) {
+          console.error("Token exchange failed:", err);
+          navigate("/");
+        }
+      }
+    };
 
-  const handleCallback = async (code: string) => {
-    try {
-      // Why: Exchange code for Gmail access token
-      const accessToken = await exchangeCodeForToken(code);
-
-      // Why: Store token in sessionStorage (not localStorage, for security)
-      sessionStorage.setItem("gmail_access_token", accessToken);
-
-      // Why: Redirect back to home
-      navigate("/");
-    } catch (err) {
-      setError(`OAuth failed: ${err}`);
-    } finally {
-      setLoading(false);
-    }
-  };
+    handleCallback();
+  }, [navigate]);
 
   return (
     <div style={{
@@ -48,8 +44,7 @@ export function OAuthCallbackPage() {
       color: "#e8d4b8",
       fontSize: "18px"
     }}>
-      {loading && <div>Connecting Gmail...</div>}
-      {error && <div style={{ color: "#ff6b6b" }}>{error}</div>}
+      Processing Gmail authorization...
     </div>
   );
 }

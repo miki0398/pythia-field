@@ -2,7 +2,6 @@
 import { callPythia } from "./pythia-api";
 
 const CLIENT_ID = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
-const CLIENT_SECRET = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_SECRET;
 const REDIRECT_URI = `${window.location.origin}/oauth/gmail/callback`;
 
 export interface GmailMessage {
@@ -33,19 +32,23 @@ export function initiateGmailOAuth() {
   window.location.href = authUrl.toString();
 }
 
-// Why: Exchange authorization code for access token
+// Why: Exchange authorization code for access token via secure Worker endpoint
 export async function exchangeCodeForToken(code: string): Promise<string> {
-  const response = await fetch("https://oauth2.googleapis.com/token", {
+  const workerUrl = import.meta.env.VITE_WORKER_URL || "http://localhost:8787";
+  
+  const response = await fetch(`${workerUrl}/gmail/token-exchange`, {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
       code: code,
-      grant_type: "authorization_code",
-      redirect_uri: REDIRECT_URI,
-    }).toString(),
+      redirectUri: REDIRECT_URI,
+    }),
   });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(`Token exchange failed: ${error.error}`);
+  }
 
   const data = await response.json();
   return data.access_token;
@@ -101,7 +104,6 @@ export async function extractPrescriptionFromEmail(
   return jsonMatch ? JSON.parse(jsonMatch[0]) : {};
 }
 
-// Helper: Decode base64 email body
 // Helper: Decode base64 email body
 function decodeEmailBody(email: GmailMessage): string {
   if (!email.payload) return email.snippet || "";
