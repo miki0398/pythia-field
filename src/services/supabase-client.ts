@@ -4,6 +4,8 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseServiceKey = import.meta.env.VITE_SUPABASE_SERVICE_KEY;
+export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
 
 console.log("✅ Supabase connected");
 
@@ -27,6 +29,7 @@ export async function saveConversation(
 }
 
 export async function upsertAuthUser(auth0User: any) {
+  // Store in localStorage (Supabase permissions issues - will fix in Phase 2)
   const userData = {
     auth0_sub: auth0User.sub,
     email: auth0User.email,
@@ -36,7 +39,7 @@ export async function upsertAuthUser(auth0User: any) {
   };
   
   localStorage.setItem('pythia_user', JSON.stringify(userData));
-  console.log('User stored in localStorage:', userData);
+  console.log('✅ User stored in localStorage:', userData);
   
   return userData;
 }
