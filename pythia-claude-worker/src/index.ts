@@ -9,6 +9,8 @@ interface Env {
   AWS_SECRET_ACCESS_KEY: string;
   AWS_S3_BUCKET: string;
   AWS_REGION: string;
+  GOOGLE_OAUTH_CLIENT_ID: string;
+  GOOGLE_OAUTH_CLIENT_SECRET: string;
 }
 
 async function executeALCSTool(
@@ -54,6 +56,113 @@ async function synthesizeVoiceWithElevenLabs(
   return await response.arrayBuffer();
 }
 
+async function handleGmailTokenExchange(request: Request, env: Env): Promise<Response> {
+  console.log("🔵 Gmail token exchange called");
+  try {
+    const body = await request.json() as any;
+    const { code, redirectUri } = body;
+
+    console.log("🔵 Exchanging code for token with Google...", { code: code?.substring(0, 10), redirectUri });
+
+    if (!code || !redirectUri) {
+      return new Response(JSON.stringify({ error: "Missing code or redirectUri" }), { status: 400 });
+    }
+
+    const response = await fetch("https://oauth2.googleapis.com/token", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        client_id: env.GOOGLE_OAUTH_CLIENT_ID,
+        client_secret: env.GOOGLE_OAUTH_CLIENT_SECRET,
+        code: code,
+        grant_type: "authorization_code",
+        redirect_uri: redirectUri,
+      }).toString(),
+    });
+
+async function handleCalendarTokenExchange(request: Request, env: Env): Promise<Response> {
+  console.log("🔵 Calendar token exchange called");
+  try {
+    const body = await request.json() as any;
+    const { code, redirectUri } = body;
+
+    console.log("🔵 Exchanging code for token with Google...", { code: code?.substring(0, 10), redirectUri });
+
+    if (!code || !redirectUri) {
+      return new Response(JSON.stringify({ error: "Missing code or redirectUri" }), { status: 400 });
+    }
+
+    const response = await fetch("https://oauth2.googleapis.com/token", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        client_id: env.GOOGLE_OAUTH_CLIENT_ID,
+        client_secret: env.GOOGLE_OAUTH_CLIENT_SECRET,
+        code: code,
+        grant_type: "authorization_code",
+        redirect_uri: redirectUri,
+      }).toString(),
+    });
+
+    const data = await response.json() as any;
+
+    if (!response.ok) {
+      console.error("🔴 Google token exchange failed:", data);
+      return new Response(JSON.stringify({ error: data.error_description || data.error }), {
+        status: response.status,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    console.log("🟢 Calendar token exchange successful");
+    return new Response(JSON.stringify({
+      access_token: data.access_token,
+      refresh_token: data.refresh_token,
+      expires_in: data.expires_in,
+    }), {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+  } catch (error) {
+    console.error("🔴 Calendar token exchange error:", error);
+    return new Response(JSON.stringify({ error: String(error) }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+}
+
+    const data = await response.json() as any;
+
+    if (!response.ok) {
+      console.error("🔴 Google token exchange failed:", data);
+      return new Response(JSON.stringify({ error: data.error_description || data.error }), {
+        status: response.status,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    console.log("🟢 Token exchange successful");
+    return new Response(JSON.stringify({
+      access_token: data.access_token,
+      refresh_token: data.refresh_token,
+      expires_in: data.expires_in,
+    }), {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+  } catch (error) {
+    console.error("🔴 Token exchange error:", error);
+    return new Response(JSON.stringify({ error: String(error) }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+}
 async function handleDocumentUpload(request: Request, env: Env): Promise<Response> {
   try {
     const formData = await request.formData();
@@ -128,6 +237,12 @@ export default {
           headers: { "Content-Type": "application/json" },
         });
       }
+    }
+    if (url.pathname === "/gmail/token-exchange") {
+      return await handleGmailTokenExchange(request, env);
+    }
+    if (url.pathname === "/calendar/token-exchange") {
+  return await handleCalendarTokenExchange(request, env);
     }
 
     if (url.pathname === "/upload") {

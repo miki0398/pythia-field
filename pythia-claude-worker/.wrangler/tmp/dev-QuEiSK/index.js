@@ -41,7 +41,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// .wrangler/tmp/bundle-AdSbcD/checked-fetch.js
+// .wrangler/tmp/bundle-e56ffz/checked-fetch.js
 function checkURL(request, init) {
   const url = request instanceof URL ? request : new URL(
     (typeof request === "string" ? new Request(request, init) : request).url
@@ -59,7 +59,7 @@ function checkURL(request, init) {
 }
 var urls;
 var init_checked_fetch = __esm({
-  ".wrangler/tmp/bundle-AdSbcD/checked-fetch.js"() {
+  ".wrangler/tmp/bundle-e56ffz/checked-fetch.js"() {
     urls = /* @__PURE__ */ new Set();
     __name(checkURL, "checkURL");
     globalThis.fetch = new Proxy(globalThis.fetch, {
@@ -1178,11 +1178,11 @@ var init_node_browser = __esm({
   }
 });
 
-// .wrangler/tmp/bundle-AdSbcD/middleware-loader.entry.ts
+// .wrangler/tmp/bundle-e56ffz/middleware-loader.entry.ts
 init_checked_fetch();
 init_modules_watch_stub();
 
-// .wrangler/tmp/bundle-AdSbcD/middleware-insertion-facade.js
+// .wrangler/tmp/bundle-e56ffz/middleware-insertion-facade.js
 init_checked_fetch();
 init_modules_watch_stub();
 
@@ -11879,6 +11879,102 @@ async function synthesizeVoiceWithElevenLabs(text, voiceId, env) {
   return await response.arrayBuffer();
 }
 __name(synthesizeVoiceWithElevenLabs, "synthesizeVoiceWithElevenLabs");
+async function handleGmailTokenExchange(request, env) {
+  console.log("\u{1F535} Gmail token exchange called");
+  try {
+    const body = await request.json();
+    const { code, redirectUri } = body;
+    console.log("\u{1F535} Exchanging code for token with Google...", { code: code?.substring(0, 10), redirectUri });
+    if (!code || !redirectUri) {
+      return new Response(JSON.stringify({ error: "Missing code or redirectUri" }), { status: 400 });
+    }
+    const response = await fetch("https://oauth2.googleapis.com/token", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        client_id: env.GOOGLE_OAUTH_CLIENT_ID,
+        client_secret: env.GOOGLE_OAUTH_CLIENT_SECRET,
+        code,
+        grant_type: "authorization_code",
+        redirect_uri: redirectUri
+      }).toString()
+    });
+    async function handleCalendarTokenExchange2(request2, env2) {
+      console.log("\u{1F535} Calendar token exchange called");
+      try {
+        const body2 = await request2.json();
+        const { code: code2, redirectUri: redirectUri2 } = body2;
+        console.log("\u{1F535} Exchanging code for token with Google...", { code: code2?.substring(0, 10), redirectUri: redirectUri2 });
+        if (!code2 || !redirectUri2) {
+          return new Response(JSON.stringify({ error: "Missing code or redirectUri" }), { status: 400 });
+        }
+        const response2 = await fetch("https://oauth2.googleapis.com/token", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({
+            client_id: env2.GOOGLE_OAUTH_CLIENT_ID,
+            client_secret: env2.GOOGLE_OAUTH_CLIENT_SECRET,
+            code: code2,
+            grant_type: "authorization_code",
+            redirect_uri: redirectUri2
+          }).toString()
+        });
+        const data2 = await response2.json();
+        if (!response2.ok) {
+          console.error("\u{1F534} Google token exchange failed:", data2);
+          return new Response(JSON.stringify({ error: data2.error_description || data2.error }), {
+            status: response2.status,
+            headers: { "Content-Type": "application/json" }
+          });
+        }
+        console.log("\u{1F7E2} Calendar token exchange successful");
+        return new Response(JSON.stringify({
+          access_token: data2.access_token,
+          refresh_token: data2.refresh_token,
+          expires_in: data2.expires_in
+        }), {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          }
+        });
+      } catch (error) {
+        console.error("\u{1F534} Calendar token exchange error:", error);
+        return new Response(JSON.stringify({ error: String(error) }), {
+          status: 500,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+    }
+    __name(handleCalendarTokenExchange2, "handleCalendarTokenExchange");
+    const data = await response.json();
+    if (!response.ok) {
+      console.error("\u{1F534} Google token exchange failed:", data);
+      return new Response(JSON.stringify({ error: data.error_description || data.error }), {
+        status: response.status,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+    console.log("\u{1F7E2} Token exchange successful");
+    return new Response(JSON.stringify({
+      access_token: data.access_token,
+      refresh_token: data.refresh_token,
+      expires_in: data.expires_in
+    }), {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
+    });
+  } catch (error) {
+    console.error("\u{1F534} Token exchange error:", error);
+    return new Response(JSON.stringify({ error: String(error) }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
+  }
+}
+__name(handleGmailTokenExchange, "handleGmailTokenExchange");
 async function handleDocumentUpload(request, env) {
   try {
     const formData = await request.formData();
@@ -11943,6 +12039,12 @@ var src_default = {
           headers: { "Content-Type": "application/json" }
         });
       }
+    }
+    if (url.pathname === "/gmail/token-exchange") {
+      return await handleGmailTokenExchange(request, env);
+    }
+    if (url.pathname === "/calendar/token-exchange") {
+      return await handleCalendarTokenExchange(request, env);
     }
     if (url.pathname === "/upload") {
       return await handleDocumentUpload(request, env);
@@ -12049,7 +12151,7 @@ var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx)
 }, "jsonError");
 var middleware_miniflare3_json_error_default = jsonError;
 
-// .wrangler/tmp/bundle-AdSbcD/middleware-insertion-facade.js
+// .wrangler/tmp/bundle-e56ffz/middleware-insertion-facade.js
 var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
   middleware_ensure_req_body_drained_default,
   middleware_miniflare3_json_error_default
@@ -12083,7 +12185,7 @@ function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
 }
 __name(__facade_invoke__, "__facade_invoke__");
 
-// .wrangler/tmp/bundle-AdSbcD/middleware-loader.entry.ts
+// .wrangler/tmp/bundle-e56ffz/middleware-loader.entry.ts
 var __Facade_ScheduledController__ = class ___Facade_ScheduledController__ {
   constructor(scheduledTime, cron, noRetry) {
     this.scheduledTime = scheduledTime;

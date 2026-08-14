@@ -4,6 +4,7 @@ import CareTeamPage from './CareTeamPage'
 import { TalkToPythia } from "../components/TalkToPythia";
 import { PrescriptionUpload } from "../components/PrescriptionUpload";
 import { initiateGmailOAuth } from "../services/gmail-connector";
+import { initiateCalendarOAuth } from "../services/calendar-connector";
 
 export default function HomePage() {
   const glowRef = useRef<HTMLDivElement>(null)
@@ -320,6 +321,29 @@ export default function HomePage() {
               minHeight: '52px'
             }}>
             📧 Connect Gmail
+          </div>
+
+          {/* PILL 6: CONNECT CALENDAR */}
+          <div
+            onClick={() => initiateCalendarOAuth()}
+            style={{
+              flex: 1,
+              minWidth: '100px',
+              background: '#EA4335',
+              border: 'none',
+              borderRadius: '60px',
+              padding: '14px 8px',
+              color: '#ffffff',
+              fontSize: '13px',
+              fontWeight: 500,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              minHeight: '52px'
+            }}>
+            📅 Connect Calendar
           </div>
 
         </div>
