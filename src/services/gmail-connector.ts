@@ -82,6 +82,39 @@ export async function getEmailContent(
   return await response.json();
 }
 
+// Why: End-to-end: extract prescription from email and convert to FHIR
+export async function extractAndConvertToFHIR(
+  email: GmailMessage,
+  patientId: string
+): Promise<any> {
+  const { prescriptionToFHIRBundle } = await import("./fhir-converter");
+  
+  // Extract prescription data
+  const emailBody = decodeEmailBody(email);
+  const systemPrompt = `Extract prescription details from this email. Return JSON:
+{
+  "labType": "blood test|imaging|follow-up|other",
+  "urgency": "routine|urgent|stat",
+  "doctorName": "extracted name",
+  "prescriptionDate": "YYYY-MM-DD"
+}`;
+
+  const response = await callPythia(emailBody, systemPrompt, []);
+  const responseText = response.claudeResponse?.content?.[0]?.text || "{}";
+  
+  const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+  const prescriptionData = jsonMatch ? JSON.parse(jsonMatch[0]) : {};
+
+  // Add patient ID
+  prescriptionData.patientId = patientId;
+
+  // Convert to FHIR Bundle
+  const fhirBundle = prescriptionToFHIRBundle(prescriptionData);
+
+  console.log("✅ Prescription converted to FHIR R4");
+  return fhirBundle;
+}
+
 // Why: Parse email body and extract prescription data with Claude
 export async function extractPrescriptionFromEmail(
   email: GmailMessage,
